@@ -4,7 +4,7 @@ const tokenMetadata = require('./local.json');
 
 // Funded expects bountyId, id, and the deposit Obj of the deposit being funded
 // Makes a comment by Pat owner on issue with the bounty Id with a link to the bounty and the amount funded.
-async function funded(router, appOctokit) {
+async function funded(appOctokit, router) {
     router.post('/funded', async (req, res) => {
         const deposit = JSON.parse(req.body.deposit);
         const token = tokenMetadata[deposit.tokenAddress];
