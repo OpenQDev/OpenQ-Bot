@@ -1,8 +1,8 @@
-FROM node:12-slim
-WORKDIR /usr/src/app
-COPY package.json package-lock.json ./
-RUN npm ci --production
-RUN npm cache clean --force
-ENV NODE_ENV="production"
+FROM node:lts-alpine
+WORKDIR /app
+RUN apk update && apk upgrade && \
+	apk add --no-cache bash git
 COPY . .
-CMD [ "npm", "start" ]
+RUN yarn
+EXPOSE 3001
+ENTRYPOINT yarn start
