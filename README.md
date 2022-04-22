@@ -30,4 +30,4 @@ For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
 ## License
 
-[ISC](LICENSE) © 2021 Flaco <andrew@openq.dev>
+[ISC](LICENSE) © 2022 Flaco <andrew@openq.dev>
