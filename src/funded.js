@@ -6,12 +6,11 @@ const tokenMetadata = require('./local.json');
 // Makes a comment by Pat owner on issue with the bounty Id with a link to the bounty and the amount funded.
 async function funded(appOctokit, router) {
     router.post('/funded', async (req, res) => {
-        const deposit = JSON.parse(req.body.deposit);
+        const { deposit } = req.body;
         const token = tokenMetadata[deposit.tokenAddress];
-        const bigNumberVolume = ethers.BigNumber.from(deposit.volume.toString());
         const decimals = parseInt(tokenMetadata[deposit.tokenAddress].decimals, 10);
 
-        const formattedVolume = ethers.utils.formatUnits(bigNumberVolume, decimals);
+        const formattedVolume = ethers.utils.formatUnits(deposit.tokenVolumes, decimals);
         const { name } = token;
         try {
             const mutation = await appOctokit.graphql(ADD_COMMENT, {
