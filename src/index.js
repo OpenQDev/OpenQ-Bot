@@ -14,7 +14,7 @@ module.exports = async function Probot(app, { getRouter }) {
 	const router = getRouter('/');
 	router.use(bodyParser.urlencoded({ extended: true }));
 	router.use(express.json());
-	router.use(cors({ origin: '*' }));
+	router.use(cors({ origin: [process.env.BASE_URL, 'openq-github-bot:3000'] }));
 	created(appOctokit, router, user);
 	funded(appOctokit, router, user);
 	refunded(appOctokit, router, user);
