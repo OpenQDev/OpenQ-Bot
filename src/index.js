@@ -14,7 +14,9 @@ module.exports = async function Probot(app, { getRouter }) {
 	const router = getRouter('/');
 	router.use(bodyParser.urlencoded({ extended: true }));
 	router.use(express.json());
-	router.use(cors({ origin: '*' }));
+	console.log(process.env.BASE_URL);
+	console.log(process.env);
+	router.use(cors({ origin: process.env.BASE_URL }));
 	created(appOctokit, router, user);
 	funded(appOctokit, router, user);
 	refunded(appOctokit, router, user);
