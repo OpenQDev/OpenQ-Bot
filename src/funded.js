@@ -25,4 +25,5 @@ async function funded(appOctokit, router) {
         res.status(200).end();
     });
 }
+
 module.exports = funded;
