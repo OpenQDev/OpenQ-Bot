@@ -1,5 +1,5 @@
 // Mapping of tokens with token metadata for token address lookup
-const polygonMainnetTokenMetadata = require('../tokens/openq-polygon-mainnet.json');
+const polygonMainnetTokenMetadata = require('../tokens/polygon-mainnet.json');
 const mumbaiTokenMetadata = require('../tokens/polygon-mumbai.json');
 const localTokenMetadata = require('../tokens/local.json');
 
