@@ -31,3 +31,7 @@ For more, check out the [Contributing Guide](CONTRIBUTING.md).
 ## License
 
 [ISC](LICENSE) © 2022 Flaco <andrew@openq.dev>
+
+## Examples
+
+`curl -X POST -d '{"bountyId": "I_kwDOGWnnz85LAv-r", "id": "sdf"}' https://development.openq.dev/githubbot/created`
