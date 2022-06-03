@@ -1,6 +1,5 @@
 const bodyParser = require('body-parser');
 const express = require('express');
-const cors = require('cors');
 const { Octokit } = require('octokit');
 const dotenv = require('dotenv');
 const created = require('./created');
