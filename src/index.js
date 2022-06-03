@@ -17,7 +17,7 @@ module.exports = async function Probot(app, { getRouter }) {
 		if (!req.headers.authorization) {
 			return res.status(403).json({ error: 'No credentials sent!' });
 		} else {
-			if (req.headers.authorization == 'abc123') {
+			if (req.headers.authorization == process.env.GITHUB_BOT_SECRET) {
 				next();
 			} else {
 				return res.status(401).json({ error: 'Invalid Credentials' });
