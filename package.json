@@ -13,7 +13,7 @@
 	],
 	"scripts": {
 		"build": "tsc",
-		"start": "probot run ./src/index.js",
+		"start": "GITHUB_BOT_SECRET=abc123 DEPLOY_ENV=mumbai probot run ./src/index.js",
 		"test": "jest"
 	},
 	"dependencies": {
