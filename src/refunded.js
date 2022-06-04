@@ -15,7 +15,7 @@ async function refunded(appOctokit, router) {
 		try {
 			const mutation = await appOctokit.graphql(ADD_COMMENT, {
 				id: req.body.bountyId,
-				body: `A deposit of  ${formattedVolume} ${name} was refunded on this issue at ${process.env.BASE_URL}/bounty/${req.body.id}`,
+				body: `A deposit of  ${formattedVolume} ${name} was refunded on this issue at ${process.env.BASE_URL}/bounty/${req.body.bountyId}/${req.body.id}`,
 			});
 			res.json(mutation);
 		} catch (err) {
