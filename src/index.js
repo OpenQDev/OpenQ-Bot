@@ -18,7 +18,8 @@ module.exports = async function Probot(app, { getRouter }) {
 		if (!req.headers.authorization) {
 			return res.status(403).json({ error: 'No credentials sent!' });
 		} else {
-			console.log(req.headers);
+			console.log('process.env.GITHUB_BOT_SECRET', process.env.GITHUB_BOT_SECRET);
+			console.log('req.headers.authorization', req.headers.authorization);
 			if (req.headers.authorization == process.env.GITHUB_BOT_SECRET) {
 				next();
 			} else {
