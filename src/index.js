@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const created = require('./created');
 const funded = require('./funded');
 const refunded = require('./refunded');
+const closed = require('./closed');
 
 module.exports = async function Probot(app, { getRouter }) {
 	dotenv.config();
@@ -28,4 +29,5 @@ module.exports = async function Probot(app, { getRouter }) {
 	created(appOctokit, router, user);
 	funded(appOctokit, router, user);
 	refunded(appOctokit, router, user);
+	closed(appOctokit, router, user);
 };
