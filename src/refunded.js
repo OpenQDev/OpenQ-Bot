@@ -24,4 +24,5 @@ async function refunded(appOctokit, router) {
 		res.status(200).end();
 	});
 }
+
 module.exports = refunded;
