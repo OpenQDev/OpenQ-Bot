@@ -6,11 +6,11 @@ const selectTokenMetadata = require('./utils');
 // Makes a comment by Pat owner on issue with the bounty Id with a link to the bounty and the amount refunded.
 async function refunded(appOctokit, router) {
 	router.post('/refunded', async (req, res) => {
-		const { deposit } = req.body;
+		const { tokenAddress, volume } = req.body;
 		const tokenMetadata = selectTokenMetadata();
-		const token = tokenMetadata[deposit.tokenAddress];
-		const { decimals } = tokenMetadata[deposit.tokenAddress];
-		const formattedVolume = ethers.utils.formatUnits(deposit.tokenVolumes.toString(), decimals);
+		const token = tokenMetadata[tokenAddress];
+		const { decimals } = tokenMetadata[tokenAddress];
+		const formattedVolume = ethers.utils.formatUnits(volume, decimals);
 		const { name } = token;
 		try {
 			const mutation = await appOctokit.graphql(ADD_COMMENT, {

@@ -11,8 +11,8 @@ async function funded(appOctokit, router) {
 		const token = tokenMetadata[deposit.tokenAddress];
 		const { decimals } = tokenMetadata[deposit.tokenAddress];
 
-		const formattedVolume = ethers.utils.formatUnits(deposit.tokenVolumes.toString(), decimals);
-		const { name } = token;
+		const formattedVolume = ethers.utils.formatUnits(deposit.tokenVolumes, decimals);
+		const name = token.name;
 		try {
 			const mutation = await appOctokit.graphql(ADD_COMMENT, {
 				id: req.body.bountyId,
