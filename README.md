@@ -14,6 +14,22 @@ npm start
 
 ## Docker
 
+And values to env file: 
+```
+PORT=3006
+APP_ID=
+BASE_URL=http://localhost:3000
+PAT=<YOUR PAT HERE>
+WEBHOOK_PROXY_URL=
+PRIVATE_KEY=
+DEPLOY_ENV = "docker"
+```
+The PAT should have public_repo, read:org, read:user permissions to the account openq-bot's comments will be coming from on github.
+Run yarn start in the openq-bot repo, and navigate to port 3006 in your browser. Probot will walk you through the rest of the set up instructions with github, and you'll find the other empty env values in the process.
+Once the env files are populated, end the process and run ./boot.sh on the full stack.
+If you run into any issues contact Voyageur <christopherstevers1@gmail.com>.
+GITHUB_BOT_SECRET="a5d5a4d787f816faabc4738588e8d919bd1a41cf80f8e02685f842b0f2bd49c2"
+
 ```sh
 # 1. Build container
 docker build -t openqdev-bot .

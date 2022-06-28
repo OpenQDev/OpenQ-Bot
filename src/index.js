@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const { Octokit } = require('octokit');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const created = require('./created');
 const funded = require('./funded');
 const refunded = require('./refunded');
@@ -14,8 +15,10 @@ module.exports = async function Probot(app, { getRouter }) {
 	const router = getRouter('/');
 	router.use(bodyParser.urlencoded({ extended: true }));
 	router.use(express.json());
+	router.use(cors({
+		origin: ['http://localhost:8075'],
+	}));
 	router.use((req, res, next) => {
-		console.log(req.headers.authorization);
 		if (!req.headers.authorization) {
 			return res.status(403).json({ error: 'No credentials sent!' });
 		} else {
