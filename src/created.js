@@ -10,7 +10,7 @@ async function created(appOctokit, router) {
 			});
 			res.json(mutation);
 		} catch (err) {
-			console.error(err.response.data.errors);
+			console.error(err);
 		}
 		res.status(200).end();
 	});
