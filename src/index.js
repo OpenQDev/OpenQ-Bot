@@ -25,6 +25,8 @@ module.exports = async function Probot(app, { getRouter }) {
 			if (req.headers.authorization == process.env.GITHUB_BOT_SECRET) {
 				next();
 			} else {
+				console.log('req.headers.authorization', req.headers.authorization);
+				console.log('process.env.GITHUB_BOT_SECRET', process.env.GITHUB_BOT_SECRET);
 				return res.status(401).json({ error: 'Invalid Credentials' });
 			}
 		}
