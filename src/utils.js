@@ -5,17 +5,17 @@ const localTokenMetadata = require('../tokens/local.json');
 const selectTokenMetadata = () => {
 	let tokenMetadata;
 	switch (process.env.DEPLOY_ENV) {
-		case 'docker':
-			tokenMetadata = localTokenMetadata;
-			break;
-		case 'localhost':
-			tokenMetadata = localTokenMetadata;
-			break;
-		case 'production':
-			tokenMetadata = polygonMainnetTokenMetadata;
-			break;
-		default:
-			throw Error('NO CORRECT NETWORK');
+	case 'docker':
+		tokenMetadata = localTokenMetadata;
+		break;
+	case 'localhost':
+		tokenMetadata = localTokenMetadata;
+		break;
+	case 'production':
+		tokenMetadata = polygonMainnetTokenMetadata;
+		break;
+	default:
+		throw Error('NO CORRECT NETWORK');
 	}
 
 	return tokenMetadata;
