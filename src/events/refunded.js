@@ -1,12 +1,12 @@
 const ethers = require('ethers');
-const { ADD_COMMENT } = require('./query');
-const selectTokenMetadata = require('./utils');
-const polygonMetadata = require('../tokens/polygon-mainnet-indexable.json');
+const { ADD_COMMENT } = require('../query');
+const selectTokenMetadata = require('../utils');
+const polygonMetadata = require('../../tokens/polygon-mainnet-indexable.json');
 
 // Refunded expects bountyId, id, and the deposit Obj of the deposit being refunded
 // Makes a comment by Pat owner on issue with the bounty Id with a link to the bounty and the amount refunded.
-async function refunded(appOctokit, router) {
-	router.post('/refunded', async (req, res) => {
+async function refunded(authenticatedGraphQl, app) {
+	app.post('/refunded', async (req, res) => {
 		const { tokenAddress, volume } = req.body;
 		const openQMetadata = selectTokenMetadata();
 		const token = openQMetadata[tokenAddress] || polygonMetadata[tokenAddress.toLowerCase()];
@@ -14,7 +14,7 @@ async function refunded(appOctokit, router) {
 		const formattedVolume = ethers.utils.formatUnits(volume, decimals);
 		const { name } = token;
 		try {
-			const mutation = await appOctokit.graphql(ADD_COMMENT, {
+			const mutation = await authenticatedGraphQl(ADD_COMMENT, {
 				id: req.body.bountyId,
 				body: `A deposit of  ${formattedVolume} ${name} was refunded on this issue at ${process.env.BASE_URL}/bounty/${req.body.bountyId}/${req.body.id}`,
 			});

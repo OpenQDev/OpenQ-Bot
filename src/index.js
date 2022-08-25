@@ -1,10 +1,10 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
-const created = require('./created');
-const funded = require('./funded');
-const refunded = require('./refunded');
-const closed = require('./closed');
+const created = require('./events/created');
+const funded = require('./events/funded');
+const refunded = require('./events/refunded');
+const closed = require('./events/closed');
 const dotenv = require('dotenv');
 const { graphql } = require('@octokit/graphql');
 
@@ -16,14 +16,17 @@ const authenticatedGraphQl = graphql.defaults({
 	},
 });
 
-const router = express();
+const app = express();
 
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use(express.json());
-router.use(cors({
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.json());
+
+app.use(cors({
 	origin: ['http://localhost:8075'],
 }));
-router.use((req, res, next) => {
+
+app.use((req, res, next) => {
 	if (!req.headers.authorization) {
 		return res.status(403).json({ error: 'No credentials sent!' });
 	} else {
@@ -37,11 +40,11 @@ router.use((req, res, next) => {
 	}
 });
 
-created(authenticatedGraphQl, router);
-funded(authenticatedGraphQl, router);
-refunded(authenticatedGraphQl, router);
-closed(authenticatedGraphQl, router);
+created(authenticatedGraphQl, app);
+funded(authenticatedGraphQl, app);
+refunded(authenticatedGraphQl, app);
+closed(authenticatedGraphQl, app);
 
-router.listen(process.env.PORT);
+app.listen(process.env.PORT);
 
 console.log(`Listening on ${process.env.PORT}`);

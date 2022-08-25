@@ -1,8 +1,8 @@
-const { ADD_COMMENT } = require('./query');
+const { ADD_COMMENT } = require('../query');
 
 // Created expects bountyId and id. Makes a comment by Pat owner on issue with the bounty Id with a link to the bounty.
-async function created(authenticatedGraphQl, router) {
-	router.post('/created', async (req, res) => {
+async function created(authenticatedGraphQl, app) {
+	app.post('/created', async (req, res) => {
 		try {
 			const mutation = await authenticatedGraphQl(ADD_COMMENT, {
 				id: req.body.bountyId,

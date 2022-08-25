@@ -1,10 +1,10 @@
-const { ADD_COMMENT } = require('./query');
+const { ADD_COMMENT } = require('../query');
 
 // Created expects bountyId and id. Makes a comment by Pat owner on issue with the bounty Id with a link to the bounty.
-async function closed(appOctokit, router) {
-	router.post('/closed', async (req, res) => {
+async function closed(authenticatedGraphQl, app) {
+	app.post('/closed', async (req, res) => {
 		try {
-			const mutation = await appOctokit.graphql(ADD_COMMENT, {
+			const mutation = await authenticatedGraphQl(ADD_COMMENT, {
 				id: req.body.bountyId,
 				body: `This bounty at ${process.env.BASE_URL}/bounty/${req.body.bountyId}/${req.body.id} has been claimed by the author of this pull request: ${req.body.closerData}.`,
 			});
