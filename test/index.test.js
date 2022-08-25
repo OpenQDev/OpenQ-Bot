@@ -1,6 +1,6 @@
 const nock = require('nock');
 // Requiring our app implementation
-const myProbotApp = require('..');
+const openQBot = require('../src/index');
 const { Probot, ProbotOctokit } = require('probot');
 // Requiring our fixtures
 const payload = require('./fixtures/issues.opened');
@@ -19,7 +19,7 @@ describe('My Probot app', () => {
 				throttle: { enabled: false },
 			}),
 		});
-		myProbotApp(probot);
+		openQBot(probot);
 	});
 
 	test('creates a passing check', async () => {
