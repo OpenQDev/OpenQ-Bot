@@ -17,7 +17,7 @@ async function funded(authenticatedGraphQl, app) {
 		try {
 			const mutation = await authenticatedGraphQl(ADD_COMMENT, {
 				id: req.body.bountyId,
-				body: `A deposit of  ${formattedVolume} ${name} was placed on this issue at ${process.env.BASE_URL}/bounty/${req.body.bountyId}/${req.body.id}`,
+				body: `A deposit of  ${formattedVolume} ${name} was placed on this issue at ${process.env.BASE_URL}/contract/${req.body.bountyId}/${req.body.id}`,
 			});
 			res.json(mutation);
 		} catch (err) {
