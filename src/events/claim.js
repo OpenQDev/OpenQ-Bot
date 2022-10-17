@@ -5,7 +5,7 @@ async function claim(authenticatedGraphQl, app) {
 		try {
 			const mutation = await authenticatedGraphQl(ADD_COMMENT, {
 				id: req.body.bountyId,
-				body: `This bounty at ${process.env.BASE_URL}/bounty/${req.body.bountyId}/${req.body.id} has been claimed by the author of this pull request: ${req.body.closerData}.`,
+				body: `This bounty at ${process.env.BASE_URL}/contract/${req.body.bountyId}/${req.body.id} has been claimed by the author of this pull request: ${req.body.closerData}.`,
 			});
 			res.json(mutation);
 		} catch (err) {
