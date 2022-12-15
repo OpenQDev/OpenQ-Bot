@@ -45,4 +45,4 @@ closed(authenticatedGraphQl, app);
 
 app.listen(process.env.PORT);
 
-console.log(`Listening on ${process.env.PORT}`);
+console.log(`OpenQ-Bot Listening on ${process.env.PORT}`);
