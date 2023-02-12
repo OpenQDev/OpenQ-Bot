@@ -37,7 +37,7 @@ jobs:
             git push -f origin ${CIRCLE_TAG} --tags
 workflows:
   version: 2
-  build:
+  build-and-deploy:
     jobs:
       - build:
           context: OpenQ
