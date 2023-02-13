@@ -41,7 +41,7 @@
 		"@types/jest": "26.0.19",
 		"@types/node": "14.18.12",
 		"@types/ws": "8.5.3",
-		"chai": "4.3.6",
+		"chai": "4.3.7",
 		"eslint-config-airbnb-base": "15.0.0",
 		"eslint-config-prettier": "8.5.0",
 		"eslint-plugin-import": "2.25.4",
