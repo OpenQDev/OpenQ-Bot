@@ -13,7 +13,7 @@
 	},
 	"dependencies": {
 		"@apollo/client": "3.5.10",
-		"@babel/eslint-parser": "7.18.2",
+		"@babel/eslint-parser": "7.19.1",
 		"@octokit/auth": "3.0.3",
 		"@octokit/auth-app": "3.6.1",
 		"@octokit/core": "3.6.0",
