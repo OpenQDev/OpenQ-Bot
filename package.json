@@ -12,7 +12,7 @@
 		"test": "jest"
 	},
 	"dependencies": {
-		"@apollo/client": "3.5.10",
+		"@apollo/client": "3.7.9",
 		"@babel/eslint-parser": "7.18.2",
 		"@octokit/auth": "3.0.3",
 		"@octokit/auth-app": "3.6.1",
